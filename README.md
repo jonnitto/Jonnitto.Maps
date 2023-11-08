@@ -6,6 +6,17 @@ One package to rule them all. With this plugin you integrate one of these servic
 package relies primarily on the settings in [`Settings.yaml`]. Because of this, only one type of card can be used per
 installation. Every map can hold multiple marker, with configurable popup.
 
+## Installation
+
+You will have to make adjustments to this package in your own Settings.yaml.
+Because of that, it is important to add the corresponding package to the composer from your theme package.
+
+```bash
+composer require jonnitto/maps --no-update
+```
+
+The --no-update command prevent the automatic update of the dependencies. After the package was added to your theme composer.json, go back to the root of the Neos installation and run composer update. Et voilà! Your desired package is now installed correctly.
+
 ## What can be configured on the map
 
 On a map element you could change the aspect ratio with `aspectRatio`.
