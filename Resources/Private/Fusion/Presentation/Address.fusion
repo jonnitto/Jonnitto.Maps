@@ -1,6 +1,6 @@
 prototype(Jonnitto.Maps:Presentation.Address) < prototype(Carbon.GeoMap:Presentation.Address) {
     class = 'jonnitto-maps-coordinate'
-    pinColor = ${Configuration.setting('Jonnitto.Maps.pinColor')}
+    pinColor.@process.fallback = ${value || Configuration.setting('Jonnitto.Maps.pinColor')}
 
     enableRouteLink = ${Configuration.setting('Jonnitto.Maps.enableRouteLink')}
 }
