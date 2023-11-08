@@ -1,0 +1,26 @@
+.jonnitto-maps {
+  & .carbon-geomap__canvas {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+  }
+
+  & .carbon-geomap__addresses {
+    display: none;
+  }
+
+  & .carbon-geomap-address > * {
+    display: block;
+  }
+
+  & .carbon-geomap-route {
+    display: block;
+    margin-top: 0.5em;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}

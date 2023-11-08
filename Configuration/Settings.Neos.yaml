@@ -1,0 +1,10 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Jonnitto.Maps':
+          position: 'start'
+  Neos:
+    fusion:
+      autoInclude:
+        Jonnitto.Maps: true

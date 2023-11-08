@@ -1,0 +1,3 @@
+'Jonnitto.Maps:Content.Address':
+  superTypes:
+    'Carbon.GeoMap:Mixin.AddressElement': true

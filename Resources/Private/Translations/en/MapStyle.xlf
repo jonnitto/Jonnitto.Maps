@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Jonnitto.StadiaMaps" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="alidade_smooth" xml:space="preserve">
+                <source>Smooth</source>
+            </trans-unit>
+            <trans-unit id="alidade_smooth_dark" xml:space="preserve">
+                <source>Smooth dark</source>
+            </trans-unit>
+            <trans-unit id="outdoors" xml:space="preserve">
+                <source>Street map</source>
+            </trans-unit>
+            <trans-unit id="osm_bright" xml:space="preserve">
+                <source>OpenStreetMap bright</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

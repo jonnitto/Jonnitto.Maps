@@ -1,0 +1,47 @@
+{
+  "name": "jonnitto.stadiamaps",
+  "description": "Dependencies for Jonnitto.StadiaMaps",
+  "license": "UNLICENSED",
+  "private": true,
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not dead"
+  ],
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.2",
+    "carbon-geomap": "^0.2.0",
+    "leaflet": "^1.9.4",
+    "maplibre-gl": "^3.5.2",
+    "protomaps-leaflet": "^1.24.0",
+    "protomaps-themes-base": "2.0.0-alpha.3"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.21.0",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "esbuild": "^0.19.5",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.1",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "scripts": {
+    "build:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer cssnano --ext css -d Resources/Public/Styles/",
+    "build:js": "esbuild Resources/Private/Assets/*.js --sourcemap --bundle --minify --outdir=Resources/Public/Scripts",
+    "build": "pnpm build:css | pnpm build:js",
+    "watch:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer --ext css -d Resources/Public/Styles/ --watch",
+    "watch:js": "esbuild Resources/Private/Assets/*.js --sourcemap --bundle --outdir=Resources/Public/Scripts --watch",
+    "watch": "pnpm watch:css | pnpm watch:js",
+    "dev:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer --ext css -d Resources/Public/Styles/",
+    "dev:js": "esbuild Resources/Private/Assets/*.js --sourcemap --bundle --outdir=Resources/Public/Scripts",
+    "dev": "pnpm dev:css | pnpm dev:js",
+    "start": "pnpm build"
+  }
+}

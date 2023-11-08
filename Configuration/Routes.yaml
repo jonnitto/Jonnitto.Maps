@@ -1,0 +1,6 @@
+- name: 'Maps Style API'
+  uriPattern: 'maps-settings.json'
+  defaults:
+    '@package': 'Jonnitto.Maps'
+    '@controller': 'MapsStyle'
+    '@action': 'settings'

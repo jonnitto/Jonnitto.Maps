@@ -1,0 +1,3 @@
+prototype(Jonnitto.Maps:Content.Map) < prototype(Carbon.GeoMap:Mixin.MapElement) {
+    type = 'Jonnitto.Maps:Presentation.Map'
+}

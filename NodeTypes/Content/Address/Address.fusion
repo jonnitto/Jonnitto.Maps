@@ -1,0 +1,3 @@
+prototype(Jonnitto.Maps:Content.Address) < prototype(Carbon.GeoMap:Mixin.AddressElement) {
+    type = 'Jonnitto.Maps:Presentation.Address'
+}

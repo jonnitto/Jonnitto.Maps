@@ -1,0 +1,31 @@
+{
+    "name": "jonnitto/maps",
+    "type": "neos-plugin",
+    "license": "GPL-3.0-or-later",
+    "description": "Maps integration for Neos CMS. Stadiamaps, Protomaps, Openstreetmaps or GoogleMaps. Live preview. Multiple addresses.",
+    "keywords": [
+        "flow",
+        "neos",
+        "Map",
+        "Stadiamaps",
+        "Openstreetmaps",
+        "GoogleMaps",
+        "Protomaps"
+    ],
+    "authors": [
+        {
+            "name": "Jon Uhlmann",
+            "email": "hello@uhlmann.pro",
+            "homepage": "https://uhlmann.pro",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "carbon/geomap": "^0.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jonnitto\\Maps\\": "Classes"
+        }
+    }
+}
