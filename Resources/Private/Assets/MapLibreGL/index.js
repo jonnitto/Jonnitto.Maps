@@ -1,4 +1,3 @@
-import { map } from "leaflet";
 import {
     inBackend,
     getAddresses,
@@ -6,12 +5,10 @@ import {
     initFrontend,
     getStyleUrl,
     listenToDarkModeChange,
-    checkIfDark,
     checkIfBasedOnClass,
     checkIfDarkAndLight,
     darkLightModeEffect,
     getStyleType,
-    createIcon,
     getOptions,
     filterObject,
 } from "../Global";
@@ -27,7 +24,6 @@ function initMap({ element, service, library, styleURL }) {
     const numberOfAddresses = addresses.length;
     const center = JSON.parse(element.dataset?.center || null);
 
-    const serviceSettings = service?.options || {};
     const mapOptions = filterObject(library.options?.mapOptions || {});
     const zoom = parseInt(element.dataset?.zoom) || mapOptions.zoom || 14;
 

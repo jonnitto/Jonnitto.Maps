@@ -5,7 +5,6 @@ import {
     initFrontend,
     getStyleUrl,
     listenToDarkModeChange,
-    checkIfDark,
     checkIfBasedOnClass,
     checkIfDarkAndLight,
     darkLightModeEffect,
