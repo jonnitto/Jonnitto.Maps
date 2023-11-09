@@ -2,6 +2,8 @@
   superTypes:
     'Carbon.GeoMap:Mixin.MapElement': true
     'Carbon.GeoMap:Mixin.Zoom': true
+  options:
+    reloadIfChildChanged: true
   constraints:
     nodeTypes:
       'Jonnitto.Maps:Content.Address': true

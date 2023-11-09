@@ -21,7 +21,8 @@
         }
     ],
     "require": {
-        "carbon/geomap": "^0.3"
+        "carbon/geomap": "^0.3",
+        "internezzo/childreload": "^1.0"
     },
     "autoload": {
         "psr-4": {
