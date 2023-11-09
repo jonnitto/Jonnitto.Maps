@@ -1,14 +1,19 @@
-.PHONY: help install copy-images watch dev production build prettier
+.PHONY: help install prepare watch dev production build prettier
 
 .DEFAULT_GOAL := build
 
 ## Prettier files
 prettier:
-	pnpm prettier --write --no-error-on-unmatched-pattern 'Resources/Private/**/*.{js,ts,php,yaml,pcss}'
-	pnpm prettier --write --no-error-on-unmatched-pattern '{Configuration,NodeTypes,Classes}/**/*.{js,ts,php,yaml,pcss}'
+	pnpm prettier --write --no-error-on-unmatched-pattern '{*,**/*}.{mjs,php,yaml,pcss,js,json}'
 
 ## Install dependencies and build production version
 build: install prettier production
+
+## Prepare Public folder
+prepare:
+	rm -rf Resources/Public
+	mkdir -pv Resources/Public/Styles/images
+	cp -r node_modules/leaflet/dist/images/* Resources/Public/Styles/images/
 
 ## Install dependencies
 install:
@@ -16,14 +21,17 @@ install:
 
 ## Watch for changes in JS and CSS files
 watch:
+	make prepare
 	pnpm watch
 
 ## Build development version
 dev:
+	make prepare
 	pnpm dev
 
 ## Build production version
 production:
+	make prepare
 	pnpm build
 
 # Define colors

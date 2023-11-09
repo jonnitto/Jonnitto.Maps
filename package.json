@@ -34,13 +34,13 @@
   },
   "scripts": {
     "build:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer cssnano --ext css -d Resources/Public/Styles/",
-    "build:js": "esbuild Resources/Private/Assets/*.js --sourcemap --bundle --minify --outdir=Resources/Public/Scripts",
+    "build:js": "node build.mjs --production",
     "build": "pnpm build:css | pnpm build:js",
     "watch:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer --ext css -d Resources/Public/Styles/ --watch",
-    "watch:js": "esbuild Resources/Private/Assets/*.js --sourcemap --bundle --outdir=Resources/Public/Scripts --watch",
+    "watch:js": "node build.mjs --watch",
     "watch": "pnpm watch:css | pnpm watch:js",
     "dev:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer --ext css -d Resources/Public/Styles/",
-    "dev:js": "esbuild Resources/Private/Assets/*.js --sourcemap --bundle --outdir=Resources/Public/Scripts",
+    "dev:js": "node build.mjs",
     "dev": "pnpm dev:css | pnpm dev:js",
     "start": "pnpm build"
   }
