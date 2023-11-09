@@ -1,4 +1,4 @@
-import { init, getOptions } from "./MapLibreGL";
+import { init, getOptions } from "./Modules/MapLibre.mjs";
 
 async function setOptions() {
     const options = await getOptions();

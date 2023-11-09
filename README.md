@@ -24,7 +24,6 @@ On a map element you could change the aspect ratio with `aspectRatio`.
 
 If you want to make it configurable, you can add your own property and let the user decide.
 
-
 ## What can be altered on the address element
 
 Beside the given properties in the inspector, you can also alter `enableRouteLink`. This enables a link to google maps
@@ -38,6 +37,10 @@ If you read the [`Settings.yaml`] carefully, you should understand how to config
 ```yaml
 Jonnitto:
   Maps:
+    # Import the Javascript with type="module" or not
+    # Modules are only supported by modern browsers
+    useJavaScriptModules: true
+
     # Can be MapLibre or Leaflet. No effect for GoogleMaps
     mapLibrary: 'Leaflet'
 
@@ -133,7 +136,6 @@ Jonnitto:
       #   # media or class (class uses the CSS class 'dark' on the HTML element)
       #   basedOn: media
 ```
-
 
 [packagist]: https://packagist.org/packages/jonnitto/maps
 [latest stable version]: https://poser.pugx.org/jonnitto/maps/v/stable

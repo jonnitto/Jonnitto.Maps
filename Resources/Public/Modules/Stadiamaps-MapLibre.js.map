@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../Private/Assets/Stadiamaps-MapLibre.js"],
+  "sourcesContent": ["import init from \"./Modules/MapLibre.mjs\";\n\ninit();\n"],
+  "mappings": "oEAEAA,EAAK",
+  "names": ["MapLibre_default"]
+}

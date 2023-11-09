@@ -1,3 +1,3 @@
-import init from "./GoogleMapsLibrary";
+import init from "./Modules/GoogleMaps.mjs";
 
 init();

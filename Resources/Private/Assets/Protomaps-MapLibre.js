@@ -1,5 +1,5 @@
 import layers from "protomaps-themes-base";
-import { init, getOptions, getStyleType } from "./MapLibreGL";
+import { init, getOptions, getStyleType } from "./Modules/MapLibre.mjs";
 
 async function setOptions() {
     const options = await getOptions();

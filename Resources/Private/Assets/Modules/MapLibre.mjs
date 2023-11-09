@@ -11,7 +11,7 @@ import {
     getStyleType,
     getOptions,
     filterObject,
-} from "../Global";
+} from "./Global.mjs";
 import { Map, NavigationControl, Marker, Popup, LngLatBounds, setRTLTextPlugin } from "maplibre-gl";
 
 // Global store for maps

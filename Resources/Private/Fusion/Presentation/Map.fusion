@@ -11,8 +11,12 @@ prototype(Jonnitto.Maps:Presentation.Map) < prototype(Carbon.GeoMap:Presentation
 
     effect = ${Configuration.Setting('Jonnitto.Maps.effect')}
 
-    class = ${BEM.modifier('jonnitto-maps', [String.toLowerCase(this.mapLibrary), String.toLowerCase(this.mapService)])}
     aspectRatio = ${Configuration.Setting('Jonnitto.Maps.aspectRatio')}
-    js = ${StaticResource.uri('Jonnitto.Maps', 'Public/Scripts/' + this.mapService + (this.mapService == 'GoogleMaps' ? '' : '-' + this.mapLibrary) + '.js')}
+    class = ${BEM.modifier('jonnitto-maps', [String.toLowerCase(this.mapLibrary), String.toLowerCase(this.mapService)])}
     css = ${StaticResource.uri('Jonnitto.Maps', 'Public/Styles/' + (this.mapService == 'GoogleMaps' ? 'GoogleMaps' : this.mapLibrary) + '.css')}
+
+    useJavaScriptModules = ${Configuration.Setting('Jonnitto.Maps.useJavaScriptModules')}
+    _jsFileName = ${this.mapService + (this.mapService == 'GoogleMaps' ? '' : '-' + this.mapLibrary) + '.js'}
+    mjs = ${this.useJavaScriptModules ? StaticResource.uri('Jonnitto.Maps', 'Public/Modules/' + this._jsFileName) : null}
+    js = ${this.useJavaScriptModules ? null : StaticResource.uri('Jonnitto.Maps', 'Public/Scripts/' + this._jsFileName)}
 }

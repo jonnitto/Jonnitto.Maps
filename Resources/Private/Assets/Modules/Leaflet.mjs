@@ -12,7 +12,7 @@ import {
     createIcon,
     getOptions,
     filterObject,
-} from "../Global";
+} from "./Global.mjs";
 import L from "leaflet";
 
 // Global store for maps, tile layers

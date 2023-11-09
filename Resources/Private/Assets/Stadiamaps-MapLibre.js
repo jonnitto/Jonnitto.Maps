@@ -1,3 +1,3 @@
-import init from "./MapLibreGL";
+import init from "./Modules/MapLibre.mjs";
 
 init();

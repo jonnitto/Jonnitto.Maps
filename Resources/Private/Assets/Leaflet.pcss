@@ -1,2 +1,42 @@
-@import "./Global/Main.pcss";
-@import "./Leaflet/Main.pcss";
+@import url("leaflet");
+@import url("./Styles/Global.pcss");
+
+.jonnitto-maps .leaflet-container {
+  font-family: inherit;
+
+  & a {
+    color: inherit;
+  }
+
+  & .leaflet-popup-content svg {
+    z-index: auto;
+  }
+}
+
+.jonnitto-maps .leaflet-control-attribution a:not([class]) {
+  color: inherit;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.jonnitto-maps .carbon-geomap__canvas {
+  &[data-effect="grayscale"] .leaflet-tile-pane {
+    filter: grayscale(1);
+  }
+
+  &[data-effect="dark"] .leaflet-tile-pane {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+  }
+
+  &[data-effect="black"] .leaflet-tile-pane {
+    filter: grayscale(1) invert(1);
+  }
+
+  &[data-effect="invert"] .leaflet-tile-pane {
+    filter: invert(1);
+  }
+}

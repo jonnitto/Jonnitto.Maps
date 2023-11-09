@@ -1,3 +1,3 @@
-import init from "./Leaflet";
+import init from "./Modules/Leaflet.mjs";
 
 init();

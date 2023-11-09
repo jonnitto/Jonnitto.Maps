@@ -1,18 +1,18 @@
 import esbuild from "esbuild";
 
-const options = {
+const baseOptions = {
     logLevel: "info",
     bundle: true,
     minify: process.argv.includes("--production"),
     sourcemap: true,
     target: "es2020",
     legalComments: "linked",
-    splitting: true,
-    external: ["/_Resources/*"],
-    format: "esm",
     entryPoints: ["Resources/Private/Assets/*.js"],
-    outdir: "Resources/Public/Scripts",
 };
+
+const scriptOptions = { ...baseOptions, outdir: "Resources/Public/Scripts", format: "iife" };
+
+const moduleOptions = { ...baseOptions, outdir: "Resources/Public/Modules", format: "esm", splitting: true };
 
 async function watch(options) {
     const context = await esbuild.context(options);
@@ -20,7 +20,9 @@ async function watch(options) {
 }
 
 if (process.argv.includes("--watch")) {
-    watch(options);
+    watch(scriptOptions);
+    watch(moduleOptions);
 } else {
-    esbuild.build(options);
+    esbuild.build(scriptOptions);
+    esbuild.build(moduleOptions);
 }

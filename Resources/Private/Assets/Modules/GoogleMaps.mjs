@@ -1,4 +1,3 @@
-import { Loader } from "@googlemaps/js-api-loader";
 import {
     inBackend,
     getAddresses,
@@ -8,7 +7,8 @@ import {
     darkLightModeEffect,
     getOptions,
     filterObject,
-} from "../Global";
+} from "./Global.mjs";
+import { Loader } from "@googlemaps/js-api-loader";
 
 // Global store for maps
 const maps = [];

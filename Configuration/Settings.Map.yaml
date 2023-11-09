@@ -1,5 +1,9 @@
 Jonnitto:
   Maps:
+    # Import the Javascript with type="module" or not
+    # Modules are only supported by modern browsers
+    useJavaScriptModules: true
+
     # Can be MapLibre or Leaflet. No effect for GoogleMaps
     mapLibrary: 'Leaflet'
 

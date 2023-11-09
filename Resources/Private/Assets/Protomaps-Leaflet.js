@@ -1,4 +1,4 @@
-import { init, getOptions } from "./Leaflet";
+import { init, getOptions } from "./Modules/Leaflet.mjs";
 import { leafletLayer } from "protomaps-leaflet";
 
 function setLayerStyle(layer, style) {
