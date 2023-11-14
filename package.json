@@ -12,9 +12,9 @@
     "@googlemaps/js-api-loader": "^1.16.2",
     "carbon-geomap": "^0.2.0",
     "leaflet": "^1.9.4",
-    "maplibre-gl": "^3.5.2",
+    "maplibre-gl": "^3.6.0",
     "protomaps-leaflet": "^1.24.0",
-    "protomaps-themes-base": "2.0.0-alpha.3"
+    "protomaps-themes-base": "2.0.0-alpha.4"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.21.0",
@@ -28,7 +28,7 @@
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
     "postcss-nested": "^6.0.1",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0"
   },
