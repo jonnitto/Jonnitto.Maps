@@ -117,6 +117,17 @@ function filterObject(object) {
     return Object.fromEntries(Object.entries(object).filter(([_, value]) => value != null));
 }
 
+function runCallbackAndRegisterTurbo(callback) {
+    callback();
+
+    document.addEventListener("turbo:load", ({ detail }) => {
+        // It is not the first load
+        if (detail.timing?.visitStart) {
+            callback();
+        }
+    });
+}
+
 export {
     inBackend,
     getAddresses,
@@ -132,4 +143,5 @@ export {
     getStyleType,
     getOptions,
     filterObject,
+    runCallbackAndRegisterTurbo,
 };

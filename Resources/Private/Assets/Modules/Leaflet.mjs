@@ -12,6 +12,7 @@ import {
     createIcon,
     getOptions,
     filterObject,
+    runCallbackAndRegisterTurbo,
 } from "./Global.mjs";
 import L from "leaflet";
 
@@ -102,41 +103,42 @@ function initMap({ element, service, library, layer, styleURL }) {
 
 async function init({ layerFunction = null, layerOptions = null, options = null, setLayerStyle = null } = {}) {
     const { service, library, effect } = options ?? (await getOptions());
-
-    darkLightModeEffect(effect);
-
     const { style, styleTemplate } = service.options;
     const hasDarkAndLightStyle = checkIfDarkAndLight(style);
     const styleBasedOnClass = hasDarkAndLightStyle ? checkIfBasedOnClass(style) : false;
 
     const styleURL = styleTemplate ? getStyleUrl(styleTemplate, style) : style;
 
-    let layer = null;
-    if (layerFunction) {
-        layer = layerFunction(layerOptions);
-        if (setLayerStyle) {
-            setLayerStyle(layer, getStyleType(style));
+    runCallbackAndRegisterTurbo(() => {
+        darkLightModeEffect(effect);
+
+        let layer = null;
+        if (layerFunction) {
+            layer = layerFunction(layerOptions);
+            if (setLayerStyle) {
+                setLayerStyle(layer, getStyleType(style));
+                listenToDarkModeChange(
+                    () => {
+                        setLayerStyle(layer, getStyleType(style));
+                    },
+                    styleBasedOnClass,
+                    hasDarkAndLightStyle,
+                );
+            }
+        } else {
             listenToDarkModeChange(
                 () => {
-                    setLayerStyle(layer, getStyleType(style));
+                    const newUrl = getStyleUrl(styleTemplate, style);
+                    tileLayers.forEach((layer) => layer.setUrl(newUrl));
                 },
                 styleBasedOnClass,
                 hasDarkAndLightStyle,
             );
         }
-    } else {
-        listenToDarkModeChange(
-            () => {
-                const newUrl = getStyleUrl(styleTemplate, style);
-                tileLayers.forEach((layer) => layer.setUrl(newUrl));
-            },
-            styleBasedOnClass,
-            hasDarkAndLightStyle,
-        );
-    }
 
-    initFrontend(service.name, (element) => {
-        initMap({ element, service, library, layer, styleURL });
+        initFrontend(service.name, (element) => {
+            initMap({ element, service, library, layer, styleURL });
+        });
     });
 }
 

@@ -11,6 +11,7 @@ import {
     getStyleType,
     getOptions,
     filterObject,
+    runCallbackAndRegisterTurbo,
 } from "./Global.mjs";
 import { Map, NavigationControl, Marker, Popup, LngLatBounds, setRTLTextPlugin } from "maplibre-gl";
 
@@ -106,9 +107,6 @@ function initMap({ element, service, library, styleURL }) {
 
 async function init({ styleFunction = null, options = null } = {}) {
     const { service, library, effect } = options ?? (await getOptions());
-
-    darkLightModeEffect(effect);
-
     const { style, styleTemplate } = service.options;
     const hasDarkAndLightStyle = checkIfDarkAndLight(style);
     const styleBasedOnClass = hasDarkAndLightStyle ? checkIfBasedOnClass(style) : false;
@@ -116,24 +114,28 @@ async function init({ styleFunction = null, options = null } = {}) {
     const getStyleFunction = styleFunction ?? getStyleUrl;
     const styleURL = getStyleFunction(styleTemplate, style);
 
-    if (styleTemplate || styleFunction) {
-        listenToDarkModeChange(
-            () => {
-                const newStyle = getStyleFunction(styleTemplate, style);
-                maps.forEach((map) => {
-                    if (!map || typeof map.setStyle != "function") {
-                        return;
-                    }
-                    map.setStyle(newStyle);
-                });
-            },
-            styleBasedOnClass,
-            hasDarkAndLightStyle,
-        );
-    }
+    runCallbackAndRegisterTurbo(() => {
+        darkLightModeEffect(effect);
 
-    initFrontend(service.name, (element) => {
-        initMap({ element, service, library, styleURL });
+        if (styleTemplate || styleFunction) {
+            listenToDarkModeChange(
+                () => {
+                    const newStyle = getStyleFunction(styleTemplate, style);
+                    maps.forEach((map) => {
+                        if (!map || typeof map.setStyle != "function") {
+                            return;
+                        }
+                        map.setStyle(newStyle);
+                    });
+                },
+                styleBasedOnClass,
+                hasDarkAndLightStyle,
+            );
+        }
+
+        initFrontend(service.name, (element) => {
+            initMap({ element, service, library, styleURL });
+        });
     });
 }
 

@@ -7,6 +7,7 @@ import {
     darkLightModeEffect,
     getOptions,
     filterObject,
+    runCallbackAndRegisterTurbo,
 } from "./Global.mjs";
 import { Loader } from "@googlemaps/js-api-loader";
 
@@ -132,8 +133,6 @@ async function init() {
         return;
     }
 
-    darkLightModeEffect(effect);
-
     const libraries = [];
     if (service?.options?.enableDirections) {
         libraries.push("places");
@@ -142,8 +141,11 @@ async function init() {
     const loader = new Loader({ apiKey, libraries });
     await loader.load();
 
-    initFrontend(service.name, (element) => {
-        initMap({ element, service });
+    runCallbackAndRegisterTurbo(() => {
+        darkLightModeEffect(effect);
+        initFrontend(service.name, (element) => {
+            initMap({ element, service });
+        });
     });
 }
 
