@@ -4,7 +4,7 @@
 .jonnitto-maps .leaflet-container {
   font-family: inherit;
 
-  & a {
+  & .leaflet-pane a {
     color: inherit;
   }
 
@@ -14,12 +14,13 @@
 }
 
 .jonnitto-maps .leaflet-control-attribution a:not([class]) {
-  color: inherit;
-  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    color: #000;
+    text-decoration: underline;
   }
 }
 
