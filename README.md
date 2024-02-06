@@ -6,6 +6,30 @@ One package to rule them all. With this plugin you integrate one of these servic
 package relies primarily on the settings in [`Settings.yaml`]. Because of this, only one type of card can be used per
 installation. Every map can hold multiple marker, with configurable popup.
 
+## Javascript Event to initalize maps
+
+If you dispatch an event with the name `jonnitto-maps:init`, the maps will be initalized. This is useful in when you
+work with AJAX request. The event listener is attached to the `window` object.
+
+If you want, for example, use it togheter with [turbo](https://turbo.hotwired.dev)
+
+```js
+document.addEventListener('turbo:load', ({ detail }) => {
+  // It is not the first load
+  if (detail.timing?.visitStart) {
+    window.dispatchEvent(new Event('jonnitto-maps:init'));
+  }
+});
+```
+
+or with [Alpine AJAX](https://alpine-ajax.js.org):
+
+```js
+window.addEventListener('ajax:success', () => {
+  window.dispatchEvent(new Event('jonnitto-maps:init'));
+});
+```
+
 ## Installation
 
 You will have to make adjustments to this package in your own Settings.yaml.

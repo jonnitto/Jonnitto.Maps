@@ -117,15 +117,10 @@ function filterObject(object) {
     return Object.fromEntries(Object.entries(object).filter(([_, value]) => value != null));
 }
 
-function runCallbackAndRegisterTurbo(callback) {
+function runCallbackAndRegisterEventListener(callback) {
     callback();
 
-    document.addEventListener("turbo:load", ({ detail }) => {
-        // It is not the first load
-        if (detail.timing?.visitStart) {
-            callback();
-        }
-    });
+    window.addEventListener("jonnitto-maps:init", callback);
 }
 
 export {
@@ -143,5 +138,5 @@ export {
     getStyleType,
     getOptions,
     filterObject,
-    runCallbackAndRegisterTurbo,
+    runCallbackAndRegisterEventListener,
 };

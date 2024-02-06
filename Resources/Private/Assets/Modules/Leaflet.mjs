@@ -12,7 +12,7 @@ import {
     createIcon,
     getOptions,
     filterObject,
-    runCallbackAndRegisterTurbo,
+    runCallbackAndRegisterEventListener,
 } from "./Global.mjs";
 import L from "leaflet";
 
@@ -109,7 +109,7 @@ async function init({ layerFunction = null, layerOptions = null, options = null,
 
     const styleURL = styleTemplate ? getStyleUrl(styleTemplate, style) : style;
 
-    runCallbackAndRegisterTurbo(() => {
+    runCallbackAndRegisterEventListener(() => {
         darkLightModeEffect(effect);
 
         let layer = null;

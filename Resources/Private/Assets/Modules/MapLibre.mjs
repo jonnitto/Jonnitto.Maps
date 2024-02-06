@@ -11,7 +11,7 @@ import {
     getStyleType,
     getOptions,
     filterObject,
-    runCallbackAndRegisterTurbo,
+    runCallbackAndRegisterEventListener,
 } from "./Global.mjs";
 import { Map, NavigationControl, Marker, Popup, LngLatBounds, setRTLTextPlugin } from "maplibre-gl";
 
@@ -114,7 +114,7 @@ async function init({ styleFunction = null, options = null } = {}) {
     const getStyleFunction = styleFunction ?? getStyleUrl;
     const styleURL = getStyleFunction(styleTemplate, style);
 
-    runCallbackAndRegisterTurbo(() => {
+    runCallbackAndRegisterEventListener(() => {
         darkLightModeEffect(effect);
 
         if (styleTemplate || styleFunction) {

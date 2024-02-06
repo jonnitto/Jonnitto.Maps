@@ -7,7 +7,7 @@ import {
     darkLightModeEffect,
     getOptions,
     filterObject,
-    runCallbackAndRegisterTurbo,
+    runCallbackAndRegisterEventListener,
 } from "./Global.mjs";
 import { Loader } from "@googlemaps/js-api-loader";
 
@@ -141,7 +141,7 @@ async function init() {
     const loader = new Loader({ apiKey, libraries });
     await loader.load();
 
-    runCallbackAndRegisterTurbo(() => {
+    runCallbackAndRegisterEventListener(() => {
         darkLightModeEffect(effect);
         initFrontend(service.name, (element) => {
             initMap({ element, service });
