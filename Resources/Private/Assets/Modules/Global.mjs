@@ -120,7 +120,7 @@ function filterObject(object) {
 function runCallbackAndRegisterEventListener(callback) {
     callback();
 
-    window.addEventListener("jonnitto-maps:init", callback);
+    window.addEventListener("jonnitto-maps:init", callback, true);
 }
 
 export {
