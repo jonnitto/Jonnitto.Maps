@@ -1,3 +1,8 @@
+Carbon:
+  GeoMap:
+    reloadFunction: "window.dispatchEvent(new Event('jonnitto-maps:init'))"
+    reloadButtonLocation: 'inside'
+
 Jonnitto:
   Maps:
     # Import the Javascript with type="module" or not

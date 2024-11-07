@@ -5,6 +5,30 @@
     z-index: 0;
   }
 
+  & .carbon-geomap__reload-button {
+    display: none;
+    color: #fff;
+    background-color: #00adee;
+    line-height: 40px;
+    border: 0;
+    padding: 0 16px;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:hover,
+    &:focus {
+      background-color: #35c3f8;
+    }
+
+    &:only-child {
+      display: block;
+    }
+  }
+
   & .carbon-geomap__addresses {
     display: none;
   }

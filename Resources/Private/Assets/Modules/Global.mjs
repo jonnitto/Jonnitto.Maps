@@ -37,7 +37,14 @@ function getMapCanvas(element) {
 }
 
 function initFrontend(name, callback) {
-    [...DOCUMENT.querySelectorAll(`.carbon-geomap.jonnitto-maps--${name.toLowerCase()}`)].forEach(callback);
+    [...DOCUMENT.querySelectorAll(`.carbon-geomap.jonnitto-maps--${name.toLowerCase()}`)].forEach((element) => {
+        element.querySelector(".carbon-geomap__reload-button")?.remove();
+        if (element.classList.contains("jonnitto-maps--done")) {
+            return;
+        }
+        element.classList.add("jonnitto-maps--done");
+        callback(element);
+    });
 }
 
 function getStyleType(style) {
