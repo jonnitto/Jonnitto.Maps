@@ -118,10 +118,11 @@ Jonnitto:
         zoom: 14
 
     Protomaps:
-      # To enable Protomaps, you have to set the url
+      # To enable Protomaps, you have to set the url or the API Key
+      apiKey: null
       url:
-        Leaflet: null # example: 'https://api.protomaps.com/tiles/v3/{z}/{x}/{y}.mvt?key=YOUR_API_KEY'
-        MapLibre: null # example 'https://api.protomaps.com/tiles/v3.json?key=YOUR_API_KEY'
+        Leaflet: 'https://api.protomaps.com/tiles/v3/{z}/{x}/{y}.mvt?key={{API_KEY}}'
+        MapLibre: 'https://api.protomaps.com/tiles/v3.json?key={{API_KEY}}'
       glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf'
       attribution: '<a href="https://github.com/protomaps/basemaps" target="_blank" rel="noopener noreferrer nofollow">Protomaps</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer nofollow">OpenStreetMap</a>'
 

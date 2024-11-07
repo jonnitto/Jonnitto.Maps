@@ -68,6 +68,18 @@ class MapsStyleController extends ActionController
             !is_string($serviceOptions["url"])
         ) {
             $serviceOptions["url"] = $serviceOptions["url"][$mapLibrary];
+
+            if (
+                isset($serviceOptions["apiKey"]) &&
+                is_string($serviceOptions["apiKey"])
+            ) {
+                $serviceOptions["url"] = str_replace(
+                    "{{API_KEY}}",
+                    $serviceOptions["apiKey"],
+                    $serviceOptions["url"]
+                );
+                unset($serviceOptions["apiKey"]);
+            }
         }
 
         if (
