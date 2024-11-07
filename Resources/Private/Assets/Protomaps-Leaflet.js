@@ -1,22 +1,17 @@
 import { init, getOptions } from "./Modules/Leaflet.mjs";
-import { leafletLayer } from "protomaps-leaflet";
+import { leafletLayer } from "../../../node_modules/protomaps-leaflet/src/frontends/leaflet";
+import { paintRules, labelRules } from "../../../node_modules/protomaps-leaflet/src/default_style/style";
+import { themes } from "../../../node_modules/protomaps-leaflet/src/default_style/themes";
 
 function setLayerStyle(layer, style) {
-    switch (style) {
-        case "dark":
-            layer.setDefaultStyle(true);
-            break;
-        case "grayscale":
-        case "white":
-            layer.setDefaultStyle(false, "white");
-            break;
-        case "black":
-            layer.setDefaultStyle(true, "black");
-            break;
-        default:
-            layer.setDefaultStyle();
-            break;
+    const theme = themes[style];
+    if (!theme) {
+        return;
     }
+    layer.options.theme = style;
+    layer.paintRules = paintRules(theme);
+    layer.labelRules = labelRules(theme);
+    layer.backgroundColor = theme.background;
     layer.clearLayout();
     layer.rerenderTiles();
 }
@@ -26,7 +21,6 @@ async function setOptions() {
     const layerOptions = {
         url: options.service.options.url,
         attribution: options.service.options.attribution,
-        //dark,
     };
     init({ layerFunction: leafletLayer, layerOptions, options, setLayerStyle });
 }

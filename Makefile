@@ -1,4 +1,4 @@
-.PHONY: help install prepare watch dev production build prettier
+.PHONY: help install prepare watch dev production build prettier protomaps-assets leaflet-assets
 
 .DEFAULT_GOAL := build
 
@@ -9,11 +9,26 @@ prettier:
 ## Install dependencies and build production version
 build: install prettier production
 
+## Download Protmaps assets
+protomaps-assets:
+	wget https://github.com/protomaps/basemaps-assets/archive/refs/heads/main.zip
+	unzip main.zip
+	rm main.zip
+	mkdir -pv Resources/Public/Protomaps/Fonts
+	mkdir -pv Resources/Public/Protomaps/Sprites
+	mv basemaps-assets-main/fonts/* Resources/Public/Protomaps/Fonts/
+	mv basemaps-assets-main/sprites/v4/* Resources/Public/Protomaps/Sprites/
+	rm -rf basemaps-assets-main
+
+leaflet-assets:
+	mkdir -pv Resources/Public/Styles/images
+	cp -r node_modules/leaflet/dist/images/* Resources/Public/Styles/images/
+
 ## Prepare Public folder
 prepare:
 	rm -rf Resources/Public
-	mkdir -pv Resources/Public/Styles/images
-	cp -r node_modules/leaflet/dist/images/* Resources/Public/Styles/images/
+	make protomaps-assets
+	make leaflet-assets
 
 ## Install dependencies
 install:

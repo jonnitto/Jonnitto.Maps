@@ -122,8 +122,10 @@ Jonnitto:
       apiKey: null
       url:
         Leaflet: 'https://api.protomaps.com/tiles/v3/{z}/{x}/{y}.mvt?key={{API_KEY}}'
-        MapLibre: 'https://api.protomaps.com/tiles/v3.json?key={{API_KEY}}'
-      glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf'
+        MapLibre: 'https://api.protomaps.com/tiles/v4.json?key={{API_KEY}}'
+      glyphs: '/_Resources/Static/Packages/Jonnitto.Maps/Protomaps/Fonts/{fontstack}/{range}.pbf'
+      # {{STYLE}} get replaced with the style setting
+      sprite: '/_Resources/Static/Packages/Jonnitto.Maps/Protomaps/Sprites/{{STYLE}}'
       attribution: '<a href="https://github.com/protomaps/basemaps" target="_blank" rel="noopener noreferrer nofollow">Protomaps</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer nofollow">OpenStreetMap</a>'
 
       # Can be light, dark, grayscale, white or black
