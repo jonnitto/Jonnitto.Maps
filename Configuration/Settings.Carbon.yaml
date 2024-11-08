@@ -1,0 +1,7 @@
+Carbon:
+  IncludeAssets:
+    Packages:
+      'Jonnitto.Maps':
+        Package: 'Jonnitto.Maps'
+        Backend:
+          Head: Backend.js[defer]

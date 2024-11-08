@@ -22,6 +22,7 @@
     ],
     "require": {
         "carbon/geomap": "^0.4",
+        "carbon/includeassets": "^6.3",
         "internezzo/childreload": "^2.0"
     },
     "autoload": {
