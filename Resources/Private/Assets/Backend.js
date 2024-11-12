@@ -12,7 +12,7 @@ const callback = (mutationList) => {
         [...addedNodes].forEach((node) => {
             const isElement = node.classList.contains(elementClassName);
             const element = isElement ? node : node.querySelector(`.${elementClassName}`);
-            if (element || !element.classList.contains(`${elementClassName}--done`)) {
+            if (element && !element.classList.contains(`${elementClassName}--done`)) {
                 fireEvent = true;
             }
         });
