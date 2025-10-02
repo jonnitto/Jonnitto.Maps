@@ -9,30 +9,31 @@
     "not dead"
   ],
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.16.8",
+    "@googlemaps/js-api-loader": "^2.0.1",
     "carbon-geomap": "^0.2.0",
     "leaflet": "^1.9.4",
-    "maplibre-gl": "^5.0.0",
-    "protomaps-leaflet": "^4.1.0",
-    "protomaps-themes-base": "^4.3.1"
+    "maplibre-gl": "^5.8.0",
+    "nanoid": "^5.1.6",
+    "protomaps-leaflet": "^4.1.1",
+    "protomaps-themes-base": "^4.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "@prettier/plugin-php": "^0.22.2",
-    "autoprefixer": "^10.4.20",
-    "cssnano": "^7.0.6",
-    "esbuild": "^0.24.2",
-    "eslint": "^9.17.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.14.0",
-    "postcss": "^8.4.49",
-    "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.1.0",
+    "@eslint/js": "^9.36.0",
+    "@prettier/plugin-php": "^0.24.0",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.1",
+    "esbuild": "^0.25.10",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
     "postcss-nested": "^7.0.2",
-    "prettier": "^3.4.2",
-    "stylelint": "^16.12.0",
-    "stylelint-config-standard": "^36.0.1"
+    "prettier": "^3.6.2",
+    "stylelint": "^16.24.0",
+    "stylelint-config-standard": "^39.0.0"
   },
   "scripts": {
     "build:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer cssnano --ext css -d Resources/Public/Styles/",
@@ -45,5 +46,6 @@
     "dev:js": "node build.mjs",
     "dev": "pnpm dev:css | pnpm dev:js",
     "start": "pnpm build"
-  }
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }

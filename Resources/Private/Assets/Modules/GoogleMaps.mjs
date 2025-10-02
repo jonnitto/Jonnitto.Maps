@@ -1,7 +1,6 @@
 import {
     inBackend,
     getAddresses,
-    createIcon,
     getMapCanvas,
     initFrontend,
     darkLightModeEffect,
@@ -9,12 +8,19 @@ import {
     filterObject,
     runCallbackAndRegisterEventListener,
 } from "./Global.mjs";
-import { Loader } from "@googlemaps/js-api-loader";
+import { setOptions, importLibrary } from "@googlemaps/js-api-loader";
+import { nanoid } from "nanoid";
 
 // Global store for maps
 const maps = [];
 
+// Global store for maps object
+let googleMaps = null;
+
 function initMap({ element, service }) {
+    if (!googleMaps) {
+        googleMaps = window.google.maps;
+    }
     const canvas = getMapCanvas(element);
     const markerCollection = [];
     const addresses = getAddresses(element);
@@ -26,12 +32,13 @@ function initMap({ element, service }) {
     const zoom = parseInt(element.dataset?.zoom) || mapOptions.zoom || 14;
     mapOptions.center = center ?? { lat: 0, lng: 0 };
     mapOptions.zoom = zoom;
+    mapOptions.mapId = mapOptions.mapId || `map-${nanoid(10)}`;
 
-    const map = new google.maps.Map(canvas, mapOptions);
-    const infowindow = new google.maps.InfoWindow({ maxWidth: 500 });
-    const directionsService = enableDirections ? new google.maps.DirectionsService() : null;
+    const map = new googleMaps.Map(canvas, mapOptions);
+    const infowindow = new googleMaps.InfoWindow({ maxWidth: 500 });
+    const directionsService = enableDirections ? new googleMaps.DirectionsService() : null;
     const directionsDisplay = enableDirections
-        ? new google.maps.DirectionsRenderer({ map, suppressMarkers: true })
+        ? new googleMaps.DirectionsRenderer({ map, suppressMarkers: true })
         : null;
     let route = 0;
     let posSource = 0;
@@ -42,18 +49,17 @@ function initMap({ element, service }) {
     }
 
     addresses.forEach((address) => {
-        const iconSettings = createIcon(address.pinColor);
-        const icon = {
-            url: `data:image/svg+xml;charset=UTF-8;base64,${btoa(iconSettings.html)}`,
-            anchor: new google.maps.Point(iconSettings.iconAnchor[0], iconSettings.iconAnchor[1]),
-            scaledSize: new google.maps.Size(iconSettings.iconSize[0], iconSettings.iconSize[1]),
-        };
+        const pin = new googleMaps.marker.PinElement({
+            background: address.pinColor,
+            glyphColor: "#fff",
+            borderColor: "rgb(0 0 0 / 50%)",
+        });
 
-        const marker = new google.maps.Marker({
+        const marker = new googleMaps.marker.AdvancedMarkerElement({
             position: { lat: address.lat, lng: address.lng },
             map,
             draggable: false,
-            icon,
+            content: pin.element,
             zIndex: -20,
         });
 
@@ -98,7 +104,7 @@ function initMap({ element, service }) {
     });
 
     if (numberOfAddresses > 1) {
-        const bounds = new google.maps.LatLngBounds();
+        const bounds = new googleMaps.LatLngBounds();
         markerCollection.forEach((marker) => {
             bounds.extend(marker.getPosition());
         });
@@ -127,19 +133,27 @@ function initMap({ element, service }) {
 
 async function init() {
     const { service, effect } = await getOptions();
-    const apiKey = service.options.apiKey;
-    if (!apiKey) {
+    const key = service.options.apiKey;
+    if (!key) {
         console.error("No API key found");
         return;
     }
 
-    const libraries = [];
+    const libraries = ["maps", "marker"];
     if (service?.options?.enableDirections) {
         libraries.push("places");
     }
 
-    const loader = new Loader({ apiKey, libraries });
-    await loader.load();
+    setOptions({
+        key,
+        v: "weekly",
+        libraries,
+    });
+
+    // load all required libraries in parallel
+    const librariesPromise = Promise.all(libraries.map((library) => importLibrary(library)));
+
+    await librariesPromise;
 
     runCallbackAndRegisterEventListener(() => {
         darkLightModeEffect(effect);
@@ -156,10 +170,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, 
         {
             origin: pointA,
             destination: pointB,
-            travelMode: google.maps.TravelMode.DRIVING,
+            travelMode: googleMaps.TravelMode.DRIVING,
         },
         function (response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
+            if (status == googleMaps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
             }
         },
