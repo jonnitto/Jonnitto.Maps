@@ -1,3 +1,2 @@
-import{b as i}from"./chunk-WBRAFUJQ.js";import"./chunk-KHGYU7TF.js";i();
-/*! For license information please see Stadiamaps-Leaflet.js.LEGAL.txt */
+import{b as i}from"./chunk-NSNFQC6K.js";import"./chunk-KHGYU7TF.js";i();
 //# sourceMappingURL=Stadiamaps-Leaflet.js.map
