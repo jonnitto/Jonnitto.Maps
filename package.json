@@ -12,18 +12,18 @@
     "@googlemaps/js-api-loader": "^2.0.1",
     "carbon-geomap": "^0.2.0",
     "leaflet": "^1.9.4",
-    "maplibre-gl": "^5.8.0",
+    "maplibre-gl": "^5.9.0",
     "nanoid": "^5.1.6",
     "protomaps-leaflet": "^4.1.1",
     "protomaps-themes-base": "^4.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
+    "@eslint/js": "^9.37.0",
     "@prettier/plugin-php": "^0.24.0",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.1.1",
     "esbuild": "^0.25.10",
-    "eslint": "^9.36.0",
+    "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "globals": "^16.4.0",
@@ -32,11 +32,11 @@
     "postcss-import": "^16.1.1",
     "postcss-nested": "^7.0.2",
     "prettier": "^3.6.2",
-    "stylelint": "^16.24.0",
-    "stylelint-config-standard": "^39.0.0"
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1"
   },
   "scripts": {
-    "build:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer cssnano --ext css -d Resources/Public/Styles/",
+    "build:css": "postcss Resources/Private/Assets/*.pcss --no-map --use postcss-import postcss-nested autoprefixer cssnano --ext css -d Resources/Public/Styles/",
     "build:js": "node build.mjs --production",
     "build": "pnpm build:css | pnpm build:js",
     "watch:css": "postcss Resources/Private/Assets/*.pcss --map --use postcss-import postcss-nested autoprefixer --ext css -d Resources/Public/Styles/ --watch",
@@ -47,5 +47,5 @@
     "dev": "pnpm dev:css | pnpm dev:js",
     "start": "pnpm build"
   },
-  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
+  "packageManager": "pnpm@10.18.1+sha512.77a884a165cbba2d8d1c19e3b4880eee6d2fcabd0d879121e282196b80042351d5eb3ca0935fa599da1dc51265cc68816ad2bddd2a2de5ea9fdf92adbec7cd34"
 }

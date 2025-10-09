@@ -1,10 +1,12 @@
 import esbuild from "esbuild";
 
+const production = process.argv.includes("--production");
+
 const baseOptions = {
     logLevel: "info",
     bundle: true,
-    minify: process.argv.includes("--production"),
-    sourcemap: true,
+    minify: true,
+    sourcemap: !production,
     target: "es2020",
     legalComments: "linked",
     entryPoints: ["Resources/Private/Assets/*.js"],

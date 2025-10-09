@@ -56,7 +56,7 @@ WHITE  := $(shell tput -Txterm setaf 7)
 RESET  := $(shell tput -Txterm sgr0)
 
 # define indention for descriptions
-TARGET_MAX_CHAR_NUM=15
+TARGET_MAX_CHAR_NUM=16
 
 ## Show help
 help:

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../Private/Assets/Stadiamaps-Leaflet.js"],
-  "sourcesContent": ["import init from \"./Modules/Leaflet.mjs\";\n\ninit();\n"],
-  "mappings": "oEAEAA,EAAK",
-  "names": ["Leaflet_default"]
-}
